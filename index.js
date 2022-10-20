@@ -1,3 +1,7 @@
+// The logic is to show the dummy public key first so the person simulating will always know
+// what to enter for the sake of 'code run completion.'
+// relies on "npm i prompt-sync" dependency for the input
+
 // Import Solana web3 functinalities
 const {
   Connection,
