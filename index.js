@@ -52,15 +52,18 @@ const airDropSol = async () => {
     // Connect to the Devnet and make a wallet from privateKey
     const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
     const myWallet = await Keypair.fromSecretKey(privateKey);
-
-    const myPublicKey = prompt(
+    console.log(
+      "For reference, your recently generated public key is:",
+      publicKey
+    );
+    const recepientPubKey = prompt(
       "Please enter the Public Key You want to Airdrop 2 SOLs to: "
     );
 
     // Request airdrop of 2 SOL to the wallet
     console.log("Airdropping some SOL to my wallet!");
     const fromAirDropSignature = await connection.requestAirdrop(
-      new PublicKey(myPublicKey),
+      new PublicKey(recepientPubKey),
       2 * LAMPORTS_PER_SOL
     );
     await connection.TrancsactionConfirmationConfig(fromAirDropSignature);
